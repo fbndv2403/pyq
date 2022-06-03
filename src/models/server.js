@@ -8,6 +8,8 @@ class Server {
     this.port = process.env.PORT || 3000;
     this.paths = {
       news: "/pyqconsultores/news",
+      auth: "/pyqconsultores/auth",
+      user: "/pyqconsultores/user",
     };
     this.middlewares();
     this.connectionDB();
@@ -26,6 +28,8 @@ class Server {
 
   routes() {
     this.app.use(this.paths.news, require("../routes/news.routes"));
+    this.app.use(this.paths.user, require("../routes/user.routes"));
+    // this.app.use(this.paths.auth, require("../routes/auth.routes"));
   }
 
   listen() {
